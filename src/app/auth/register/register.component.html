@@ -1,0 +1,84 @@
+<div class="header">
+  <div class="margin"></div>
+  <div class="title"><p>PROJECT MANAGER</p></div>
+  <div class="navbar">
+    <p (click)="goToLogin()">LOGIN</p>
+  </div>
+  <div class="margin"></div>
+</div>
+<div class="container">
+  <form nz-form [formGroup]="registerForm" (ngSubmit)="register()">
+    <nz-form-item>
+      <nz-form-control nzErrorTip="Please input your email!">
+        <nz-input-group nzPrefixIcon="user">
+          <input
+            type="text"
+            nz-input
+            formControlName="email"
+            placeholder="Email"
+          />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-control
+        nzErrorTip="Password must have at least 8 characters long!"
+      >
+        <nz-input-group nzPrefixIcon="lock">
+          <input
+            type="password"
+            nz-input
+            formControlName="password"
+            placeholder="Password"
+            (input)="checkConfirmPass()"
+          />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-control nzErrorTip="Please confirm your password!">
+        <nz-input-group nzPrefixIcon="lock">
+          <input
+            type="password"
+            nz-input
+            formControlName="confirmPass"
+            placeholder="Confirm password"
+            (input)="checkConfirmPass()"
+          />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-control nzErrorTip="Please input your last name!">
+        <nz-input-group nzPrefixIcon="group">
+          <input
+            type="text"
+            nz-input
+            formControlName="lastname"
+            placeholder="Last name"
+          />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-control nzErrorTip="Please input your first name!">
+        <nz-input-group nzPrefixIcon="group">
+          <input
+            type="text"
+            nz-input
+            formControlName="firstname"
+            placeholder="First name"
+          />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+    <div nz-row class="login-form-margin"></div>
+    <button
+      nz-button
+      class="login-form-button login-form-margin"
+      [nzType]="'primary'"
+    >
+      Register
+    </button>
+  </form>
+</div>

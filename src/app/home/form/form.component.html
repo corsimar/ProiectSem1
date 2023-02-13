@@ -1,0 +1,87 @@
+<div class="header">
+  <div class="margin"></div>
+  <div class="title"><p>PROJECT MANAGER</p></div>
+  <div class="navbar">
+    <p (click)="goHome()">HOME</p>
+    <p (click)="goAddProject()">ADD PROJECT</p>
+    <p (click)="goViewProjects()">VIEW PROJECTS</p>
+    <p (click)="signOut()">SIGN OUT</p>
+  </div>
+  <div class="margin"></div>
+</div>
+<div class="container">
+  <form nz-form [formGroup]="addProjectForm" (ngSubmit)="addProject()">
+    <nz-form-item>
+      <nz-form-control nzErrorTip="Please input the project title!">
+        <nz-input-group nzPrefixIcon="book">
+          <input
+            type="text"
+            nz-input
+            formControlName="title"
+            placeholder="Project title"
+          />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-control nzErrorTip="Please input the project leader email!">
+        <nz-input-group nzPrefixIcon="user">
+          <input
+            type="email"
+            nz-input
+            formControlName="leader"
+            placeholder="Leader email"
+          />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-control nzErrorTip="Team size must be between 8 and 32 people!">
+        <nz-input-group nzPrefixIcon="team">
+          <input
+            type="number"
+            min="0"
+            nz-input
+            formControlName="teamSize"
+            placeholder="Team size"
+          />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-control
+        nzErrorTip="Project release date must be between a month and a year from now."
+      >
+        <nz-input-group nzPrefixIcon="carry-out">
+          <input
+            type="date"
+            nz-input
+            formControlName="release"
+            placeholder="Project release"
+            (change)="getDaysBetween()"
+          />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-control>
+        <nz-input-group nzPrefixIcon="comment">
+          <input
+            type="text"
+            nz-input
+            formControlName="comments"
+            placeholder="Comments"
+          />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+    <button
+      nz-button
+      class="login-form-button login-form-margin"
+      [nzType]="'primary'"
+      [disabled]="!validForm()"
+    >
+      Add project
+    </button>
+  </form>
+</div>

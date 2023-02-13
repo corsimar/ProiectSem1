@@ -1,0 +1,48 @@
+<div class="header">
+  <div class="margin"></div>
+  <div class="title"><p>PROJECT MANAGER</p></div>
+  <div class="navbar">
+    <p (click)="goHome()">HOME</p>
+    <p (click)="goAddProject()">ADD PROJECT</p>
+    <p (click)="goViewProjects()">VIEW PROJECTS</p>
+    <p (click)="signOut()">SIGN OUT</p>
+  </div>
+  <div class="margin"></div>
+</div>
+<div class="container">
+  <div class="search">
+    <div class="searchbar">
+      <input (change)="formatSearch($event)" type="text" placeholder="Search" />
+      <div class="btn" (click)="search()">Search</div>
+      <div class="btn" (click)="reset($event)">Reset</div>
+    </div>
+  </div>
+  <nz-table #sortTable [nzData]="projectsList" nzTableLayout="fixed">
+    <thead>
+      <tr>
+        <th
+          *ngFor="let column of columns"
+          [nzSortFn]="column.compare"
+          [nzSortPriority]="column.priority"
+        >
+          {{ column.title }}
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of sortTable.data">
+        <td>{{ data.title }}</td>
+        <td>{{ data.leader }}</td>
+        <td>{{ data.teamSize }}</td>
+        <td>{{ data.release }}</td>
+        <td>{{ data.comments }}</td>
+        <td>
+          <div class="buttons">
+            <div class="btn" (click)="viewProject(data)">View</div>
+            <div class="btn" (click)="deleteProject(data)">Delete</div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+</div>

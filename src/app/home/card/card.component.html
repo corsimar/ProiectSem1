@@ -1,0 +1,20 @@
+<div class="header">
+  <div class="margin"></div>
+  <div class="title"><p>PROJECT MANAGER</p></div>
+  <div class="navbar">
+    <p (click)="goHome()">HOME</p>
+    <p (click)="goAddProject()">ADD PROJECT</p>
+    <p (click)="goViewProjects()">VIEW PROJECTS</p>
+    <p (click)="signOut()">SIGN OUT</p>
+  </div>
+  <div class="margin"></div>
+</div>
+<div class="container">
+  <nz-carousel [nzEffect]="effect">
+    <div nz-carousel-content *ngFor="let index of array; let i = index">
+      <div class="margin-top"></div>
+      <h1>{{ texts[i] }}</h1>
+      <h3>{{ index }}</h3>
+    </div>
+  </nz-carousel>
+</div>
